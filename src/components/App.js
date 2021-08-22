@@ -1,51 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
+import Footer from './Footer';
+import Header from './Header';
+
+import Main from './Main';
 
 
 function App() {
   return (
     <div className="page">
-      <header className="header page__header">
-        <img
-          src="<%=require('./images/header__logo.svg')%>"
-          alt="Логотип сервиса Mesto"
-          className="logo header__logo"
-        />
-      </header>c
-      <main className="content">
-        <section className="profile content__profile">
-          <div className="profile__avatar-button">
-            <img src="#" className="profile__avatar" alt="Аватарка пользователя" />
-          </div>
-
-          <div className="profile__main">
-            <div className="profile__info">
-              <div className="profile__client-info">
-                <h1 className="profile__title">Жак-Ив Кусто</h1>
-                <p className="profile__subtitle">Исследователь океана</p>
-              </div>
-
-              <button
-                className="profile__edit-button"
-                type="button"
-                aria-label="Изменить информацию о пользователе"
-              ></button>
-            </div>
-
-            <button
-              className="profile__add-button"
-              type="button"
-              aria-label="добавить новое фото"
-            ></button>
-          </div>
-        </section>
-        <section className="cards">
-          <ul className="cards__items"></ul>
-        </section>
-      </main>
-      <footer className="footer page__footer">
-        <p className="footer__desc">&#169; 2020 Mesto Russia</p>
-      </footer>
+      <Header />
+      <Main />
+      <Footer />
 
       <section className="popup popup-profile">
         <div className="popup__main">
