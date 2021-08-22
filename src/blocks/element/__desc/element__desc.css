@@ -1,0 +1,7 @@
+.element__desc {
+  display: flex;
+  justify-content: space-between;
+  width: 87%;
+  align-items: center;
+  margin: 25px 0 0 21px;
+}
