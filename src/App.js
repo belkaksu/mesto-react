@@ -1,9 +1,10 @@
+import React from 'react';
 import logo from './logo.svg';
 
 
 function App() {
   return (
-    <>
+    <div className="page">
       <header className="header page__header">
         <img
           src="<%=require('./images/header__logo.svg')%>"
@@ -204,7 +205,7 @@ function App() {
           </form>
         </div>
       </section>
-    </>
+    </div>
   );
 }
 
