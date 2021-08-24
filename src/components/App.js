@@ -15,12 +15,12 @@ function App() {
       <section className="popup popup-profile">
         <div className="popup__main">
           <button
-            className="popup__close-button popup-profile__close-button"
+            className="popup__close-button"
             type="button"
             aria-label="Кнопка закрытия попапа"
           ></button>
           <form
-            className="popup__container popup__container_profile_data"
+            className="popup__container"
             name="popupForm"
             novalidate
           >
