@@ -24,6 +24,12 @@ function App() {
     setIsEditAvatarPopupOpen(true)
   }
 
+  function closeAllPopups() {
+    setIsEditProfilePopupOpen(false)
+    setIsAddPlacePopupOpen(false)
+    setIsEditAvatarPopupOpen(false)
+  }
+
   const editProfileChildren = (
     <>
       <input
@@ -92,17 +98,14 @@ function App() {
   )
 
 
-
-
-
   return (
     <div className="page">
       <Header />
       <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleEditAvatarClick} />
       <Footer />
-      <PopupWithForm name="profile" title="Редактировать профиль" buttonText="Сохранить" isOpen={isEditProfilePopupOpen} children={editProfileChildren} />
-      <PopupWithForm name="add-card" title="Новое место" buttonText="Создать" isOpen={isAddPlacePopupOpen} children={AddPlaceChildren} />
-      <PopupWithForm name="new-avatar" title="Обновить аватар" buttonText="Сохранить" isOpen={isEditAvatarPopupOpen} children={EditAvatarChildren} />
+      <PopupWithForm name="profile" title="Редактировать профиль" buttonText="Сохранить" isOpen={isEditProfilePopupOpen} children={editProfileChildren} onClose={closeAllPopups}/>
+      <PopupWithForm name="add-card" title="Новое место" buttonText="Создать" isOpen={isAddPlacePopupOpen} children={AddPlaceChildren} onClose={closeAllPopups}/>
+      <PopupWithForm name="new-avatar" title="Обновить аватар" buttonText="Сохранить" isOpen={isEditAvatarPopupOpen} children={EditAvatarChildren} onClose={closeAllPopups}/>
       
       <ImagePopup />
 
