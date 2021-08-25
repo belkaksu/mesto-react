@@ -5,14 +5,26 @@ function Main(props) {
 
    const [userName, setUserName] = React.useState('name');
    const [userDescription, setUserDescription] = React.useState('job');
-   const [userAvatar, setUserAvatar] = React.useState('avatar')
+   const [userAvatar, setUserAvatar] = React.useState('avatar');
+   const [cards, setCards] = React.useState([]);
+   const [userId, setUserId] = React.useState('');
 
-    React.useEffect(() => {
+      React.useEffect(() => {
         api.getUserInfo()
         .then((userData) => {
             setUserName(userData.name);
             setUserDescription(userData.about);
             setUserAvatar(userData.avatar)
+            setUserId(userData._id)
+        }).catch((err) => {
+            console.log(err);
+        })
+    }, []);
+
+    React.useEffect(() => {
+        api.getInitialCards()
+        .then((cardData) => {
+            setCards(cardData)
         }).catch((err) => {
             console.log(err);
         })
@@ -61,7 +73,35 @@ function Main(props) {
           </div>
         </section>
         <section className="cards">
-          <ul className="cards__items"></ul>
+          <ul className="cards__items">
+              {cards.map((card, i) => (
+                  
+                <li className="element" key={card._id}>
+        <img
+          className="element__image"
+          alt="Фото"
+          src={card.link}
+        />
+        <button
+          className={`element__delete-button ${card.owner._id === userId ? "element__delete-button_display-active" : "element__delete-button"}`}
+          type="button"
+          aria-label="Удалить карточку"
+
+        ></button>
+        <div className="element__desc">
+          <h2 className="element__title">{card.name}</h2>
+          <div className="element__like-container">
+            <button
+              className="element__icon"
+              type="button"
+              aria-label="Поставить лайк"
+            ></button>
+            <p className="element__counter">{card.likes.length}</p>
+          </div>
+        </div>
+      </li>
+              ))}
+              </ul>
         </section>
       </main>
     )
