@@ -4,6 +4,7 @@ import Header from './Header';
 import Main from './Main';
 import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
+import { api } from '../utils/api';
 
 
 function App() {
@@ -39,8 +40,8 @@ function App() {
         placeholder="ФИО или ник Пользователя"
         name="userName"
         required
-        minlength="2"
-        maxlength="40"
+        minLength="2"
+        maxLength="40"
       />
       <span className="user-name-error popup__item-error"></span>
       <input
@@ -50,8 +51,8 @@ function App() {
         placeholder="Род деятельности"
         name="userJob"
         required
-        minlength="2"
-        maxlength="200"
+        minLength="2"
+        maxLength="200"
       />
       <span className="user-job-error popup__item-error"></span>
     </>
@@ -66,8 +67,8 @@ function App() {
         placeholder="Название"
         required
         name="dataName"
-        minlength="2"
-        maxlength="30"
+        minLength="2"
+        maxLength="30"
       />
       <span className="place-name-error popup__item-error"></span>
       <input
@@ -103,10 +104,10 @@ function App() {
       <Header />
       <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleEditAvatarClick} />
       <Footer />
-      <PopupWithForm name="profile" title="Редактировать профиль" buttonText="Сохранить" isOpen={isEditProfilePopupOpen} children={editProfileChildren} onClose={closeAllPopups}/>
-      <PopupWithForm name="add-card" title="Новое место" buttonText="Создать" isOpen={isAddPlacePopupOpen} children={AddPlaceChildren} onClose={closeAllPopups}/>
-      <PopupWithForm name="new-avatar" title="Обновить аватар" buttonText="Сохранить" isOpen={isEditAvatarPopupOpen} children={EditAvatarChildren} onClose={closeAllPopups}/>
-      
+      <PopupWithForm name="profile" title="Редактировать профиль" buttonText="Сохранить" isOpen={isEditProfilePopupOpen} children={editProfileChildren} onClose={closeAllPopups} />
+      <PopupWithForm name="add-card" title="Новое место" buttonText="Создать" isOpen={isAddPlacePopupOpen} children={AddPlaceChildren} onClose={closeAllPopups} />
+      <PopupWithForm name="new-avatar" title="Обновить аватар" buttonText="Сохранить" isOpen={isEditAvatarPopupOpen} children={EditAvatarChildren} onClose={closeAllPopups} />
+
       <ImagePopup />
 
       {/* <section className="popup popup-profile">
@@ -119,7 +120,7 @@ function App() {
           <form
             className="popup__container"
             name="popupForm"
-            novalidate
+            noValidate
           >
             <h2 className="popup__title">Редактировать профиль</h2>
 
@@ -130,8 +131,8 @@ function App() {
               placeholder="ФИО или ник Пользователя"
               name="userName"
               required
-              minlength="2"
-              maxlength="40"
+              minLength="2"
+              maxLength="40"
             />
             <span className="user-name-error popup__item-error"></span>
             <input
@@ -141,8 +142,8 @@ function App() {
               placeholder="Род деятельности"
               name="userJob"
               required
-              minlength="2"
-              maxlength="200"
+              minLength="2"
+              maxLength="200"
             />
             <span className="user-job-error popup__item-error"></span>
 
@@ -163,7 +164,7 @@ function App() {
           <form
             className="popup__container popup-add-card__container"
             name="popupAddCardForm"
-            novalidate
+            noValidate
           >
             <h2 className="popup__title">Новое место</h2>
 
@@ -174,8 +175,8 @@ function App() {
               placeholder="Название"
               required
               name="dataName"
-              minlength="2"
-              maxlength="30"
+              minLength="2"
+              maxLength="30"
             />
             <span className="place-name-error popup__item-error"></span>
             <input
@@ -220,7 +221,7 @@ function App() {
           <form
             className="popup__container popup-card-delete__container"
             name="popupCardDelete"
-            novalidate
+            noValidate
           >
             <h2 className="popup__title popup-card-delete__title">Вы уверены?</h2>
             <button
@@ -243,7 +244,7 @@ function App() {
           <form
             className="popup__container popup-new-avatar__container"
             name="popupNewAvatar"
-            novalidate
+            noValidate
           >
             <h2 className="popup__title popup-new-avatar__title">
               Обновить аватар
