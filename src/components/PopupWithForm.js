@@ -15,7 +15,6 @@ function PopupWithForm(props) {
                 <form
                     className="popup__container"
                     name={props.name}
-                    noValidate
                 >
                     <h2 className="popup__title">{props.title}</h2>
                     {props.children}

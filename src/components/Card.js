@@ -8,7 +8,7 @@ function Card(props) {
 
 
     return(
-        <li className="element" key={props.card._id}>
+        <li className="element">
         <img
           className="element__image"
           alt="Фото"

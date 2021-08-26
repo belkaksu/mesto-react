@@ -30,7 +30,7 @@ function Main(props) {
         <main className="content">
         <section className="profile content__profile">
           <div className="profile__avatar-button" onClick={props.onEditAvatar}>
-            <img src={userAvatar} style={{ backgroundImage: `url(${userAvatar})` }} className="profile__avatar" alt="Аватарка пользователя" />
+            <img src={userAvatar} className="profile__avatar" alt="Аватарка пользователя" />
           </div>
 
           <div className="profile__main">

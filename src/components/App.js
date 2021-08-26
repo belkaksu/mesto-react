@@ -12,7 +12,7 @@ function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false)
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false)
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false)
-  const [selectedCard, setSelectedCard] = React.useState({name: '', link: ''})
+  const [selectedCard, setSelectedCard] = React.useState({ name: '', link: '' })
 
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(true)
@@ -34,7 +34,7 @@ function App() {
     setIsEditProfilePopupOpen(false)
     setIsAddPlacePopupOpen(false)
     setIsEditAvatarPopupOpen(false)
-    setSelectedCard({name: '', link: ''})
+    setSelectedCard({ name: '', link: '' })
   }
 
   const editProfileChildren = (
@@ -104,17 +104,23 @@ function App() {
     </>
   )
 
-  
+
   return (
     <div className="page">
       <Header />
-      <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleEditAvatarClick} onCardClick={handleCardClick}/>
+      <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleEditAvatarClick} onCardClick={handleCardClick} />
       <Footer />
-      <PopupWithForm name="profile" title="Редактировать профиль" buttonText="Сохранить" isOpen={isEditProfilePopupOpen} children={editProfileChildren} onClose={closeAllPopups} />
-      <PopupWithForm name="add-card" title="Новое место" buttonText="Создать" isOpen={isAddPlacePopupOpen} children={AddPlaceChildren} onClose={closeAllPopups} />
-      <PopupWithForm name="new-avatar" title="Обновить аватар" buttonText="Сохранить" isOpen={isEditAvatarPopupOpen} children={EditAvatarChildren} onClose={closeAllPopups} />
-      <ImagePopup card={selectedCard} onClose={closeAllPopups}/>
-</div>
+      <PopupWithForm name="profile" title="Редактировать профиль" buttonText="Сохранить" isOpen={isEditProfilePopupOpen} onClose={closeAllPopups}>
+        {editProfileChildren}
+      </PopupWithForm>
+      <PopupWithForm name="add-card" title="Новое место" buttonText="Создать" isOpen={isAddPlacePopupOpen} onClose={closeAllPopups}>
+        {AddPlaceChildren}
+      </PopupWithForm>
+      <PopupWithForm name="new-avatar" title="Обновить аватар" buttonText="Сохранить" isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups}>
+        {EditAvatarChildren}
+      </PopupWithForm>
+      <ImagePopup card={selectedCard} onClose={closeAllPopups} />
+    </div>
   );
 }
 
