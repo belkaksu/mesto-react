@@ -1,5 +1,6 @@
 import React from 'react';
 import { api } from '../utils/api';
+import Card from './Card';
 
 function Main(props) {
 
@@ -75,31 +76,8 @@ function Main(props) {
         <section className="cards">
           <ul className="cards__items">
               {cards.map((card, i) => (
-                  
-                <li className="element" key={card._id}>
-        <img
-          className="element__image"
-          alt="Фото"
-          src={card.link}
-        />
-        <button
-          className={`element__delete-button ${card.owner._id === userId ? "element__delete-button_display-active" : "element__delete-button"}`}
-          type="button"
-          aria-label="Удалить карточку"
-
-        ></button>
-        <div className="element__desc">
-          <h2 className="element__title">{card.name}</h2>
-          <div className="element__like-container">
-            <button
-              className="element__icon"
-              type="button"
-              aria-label="Поставить лайк"
-            ></button>
-            <p className="element__counter">{card.likes.length}</p>
-          </div>
-        </div>
-      </li>
+                <Card card={card} userId={userId} key={card._id} onCardClick={props.onCardClick}/>  
+                
               ))}
               </ul>
         </section>
