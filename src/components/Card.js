@@ -19,6 +19,7 @@ function Card(props) {
           className={`element__delete-button ${props.card.owner._id === props.userId ? "element__delete-button_display-active" : "element__delete-button"}`}
           type="button"
           aria-label="Удалить карточку"
+          onClick={props.isOpen}
 
         ></button>
         <div className="element__desc">

@@ -10,38 +10,21 @@ function Main(props) {
    const [cards, setCards] = React.useState([]);
    const [userId, setUserId] = React.useState('');
 
-      React.useEffect(() => {
-        api.getUserInfo()
-        .then((userData) => {
-            setUserName(userData.name);
-            setUserDescription(userData.about);
-            setUserAvatar(userData.avatar)
-            setUserId(userData._id)
-        }).catch((err) => {
-            console.log(err);
-        })
-    }, []);
 
     React.useEffect(() => {
-        api.getInitialCards()
-        .then((cardData) => {
-            setCards(cardData)
-        }).catch((err) => {
-            console.log(err);
-        })
-    }, [])
-
-    // Promise.all([api.getUserInfo(), api.getInitialCards()])
-    // .then(([userData, cardData]) => {
+    Promise.all([api.getUserInfo(), api.getInitialCards()])
+    .then(([userData, cardData]) => {
   
-    //   userInfo.setUserInfo(userData.name, userData.about)
-    //   userInfo.setUserAvatar(userData.avatar)
-    //   userId = userData._id;
-    //   cardsContainer.renderItems(cardData.reverse());
-    // })
-    // .catch((err) => {
-    //   console.log(err);
-    // });
+        setUserName(userData.name);
+        setUserDescription(userData.about);
+        setUserAvatar(userData.avatar)
+        setUserId(userData._id)
+        setCards(cardData)
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}, [])
 
     return(
         <main className="content">
